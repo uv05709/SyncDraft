@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDocumentById, updateDocument } from "@/lib/documents";
+import { deleteDocument, getDocumentById, updateDocument } from "@/lib/documents";
 
 type Params = {
   params: {
@@ -47,6 +47,35 @@ export async function PATCH(request: NextRequest, { params }: Params) {
     console.error("Failed to update document", error);
     return NextResponse.json(
       { error: "Unable to update document" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(_request: NextRequest, { params }: Params) {
+  try {
+    const documentId = params.id?.trim();
+    if (!documentId) {
+      return NextResponse.json(
+        { error: "Document id is required" },
+        { status: 400 }
+      );
+    }
+
+    const deleted = await deleteDocument(documentId);
+    if (!deleted) {
+      return NextResponse.json({ error: "Document not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({
+      message: "Document deleted",
+      document: deleted.document,
+      deletedRevisions: deleted.deletedRevisions
+    });
+  } catch (error) {
+    console.error("Failed to delete document", error);
+    return NextResponse.json(
+      { error: "Unable to delete document" },
       { status: 500 }
     );
   }

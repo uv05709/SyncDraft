@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { connectToDatabase } from "@/lib/mongodb";
 import { DocumentModel } from "@/models/Document";
+import { RevisionModel } from "@/models/Revision";
 import type { DocumentSummary } from "@/types/document";
 
 type DocumentLean = {
@@ -120,4 +121,23 @@ export async function updateDocument(
   }
 
   return serialize(doc);
+}
+
+export async function deleteDocument(documentId: string) {
+  await connectToDatabase();
+
+  const deletedDoc = (await DocumentModel.findOneAndDelete({
+    documentId
+  }).lean()) as DocumentLean | null;
+
+  if (!deletedDoc) {
+    return null;
+  }
+
+  const revisionsResult = await RevisionModel.deleteMany({ documentId });
+
+  return {
+    document: serialize(deletedDoc),
+    deletedRevisions: revisionsResult.deletedCount ?? 0
+  };
 }
