@@ -109,8 +109,7 @@ Deployed using Vercel
 ## 🧠 AI Tools Used
 
 -   ChatGPT (OpenAI)
--   Codex (OpenAI)
--   Claude (Anthropic)
+
 
 All generated code was reviewed and modified manually.
 
