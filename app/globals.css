@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --app-bg-top: 239 246 255;
+  --app-bg-bottom: 248 250 252;
+}
+
+html,
+body {
+  @apply min-h-full text-slate-900 antialiased;
+}
+
+body {
+  background-color: rgb(var(--app-bg-bottom));
+  background-image:
+    radial-gradient(
+      circle at 10% -10%,
+      rgba(56, 189, 248, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(59, 130, 246, 0.12),
+      transparent 36%
+    ),
+    linear-gradient(
+      to bottom,
+      rgb(var(--app-bg-top)) 0%,
+      rgb(var(--app-bg-bottom)) 35%,
+      rgb(var(--app-bg-bottom)) 100%
+    );
+}
+
+.shell-container {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.surface {
+  @apply rounded-2xl border border-slate-200/80 bg-white/90 shadow-soft backdrop-blur;
+}
+
+::selection {
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+.lexical-editor h1 {
+  @apply mb-4 text-3xl font-semibold leading-tight;
+}
+
+.lexical-editor h2 {
+  @apply mb-3 text-2xl font-semibold leading-tight;
+}
+
+.lexical-editor p {
+  @apply mb-3 leading-7 text-slate-800;
+}
+
+.lexical-editor ul {
+  @apply mb-3 list-disc pl-6;
+}
+
+.lexical-editor ol {
+  @apply mb-3 list-decimal pl-6;
+}
+
+.lexical-editor strong {
+  @apply font-semibold;
+}
+
+.lexical-editor em {
+  @apply italic;
+}
+
+.lexical-editor u {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.editor-placeholder {
+  @apply pointer-events-none absolute left-0 top-0 select-none text-slate-400;
+}

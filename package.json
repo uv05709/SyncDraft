@@ -1,0 +1,42 @@
+{
+  "name": "syncdraft",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@lexical/react": "^0.24.0",
+    "@liveblocks/client": "^2.12.0",
+    "@liveblocks/node": "^2.12.0",
+    "@liveblocks/react": "^2.12.0",
+    "@liveblocks/react-lexical": "^2.12.0",
+    "@liveblocks/react-ui": "^2.12.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "lexical": "^0.24.0",
+    "lucide-react": "^0.474.0",
+    "mongoose": "^8.12.1",
+    "nanoid": "^5.1.5",
+    "next": "14.2.26",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sonner": "^2.0.5",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.24",
+    "@types/react": "^18.3.21",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "14.2.26",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.2"
+  }
+}
