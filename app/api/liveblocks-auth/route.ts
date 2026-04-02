@@ -21,10 +21,20 @@ export async function POST(request: NextRequest) {
       secret
     });
 
-    const { room } = (await request.json()) as { room?: string };
+    const requestBody = (await request.json().catch(() => null)) as
+      | { room?: string }
+      | null;
+    const room =
+      typeof requestBody?.room === "string" ? requestBody.room.trim() : "";
 
-    if (!room || typeof room !== "string") {
+    if (!room) {
       return new Response(JSON.stringify({ error: "Room is required" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
+    if (!/^[\w:-]{1,120}$/.test(room)) {
+      return new Response(JSON.stringify({ error: "Invalid room format" }), {
         status: 400,
         headers: { "Content-Type": "application/json" }
       });
@@ -40,9 +50,9 @@ export async function POST(request: NextRequest) {
     });
 
     session.allow(room, session.FULL_ACCESS);
-    const { body, status } = await session.authorize();
+    const { body: authBody, status } = await session.authorize();
 
-    const response = new Response(body, {
+    const response = new Response(authBody, {
       status,
       headers: {
         "Content-Type": "application/json",
@@ -51,9 +61,10 @@ export async function POST(request: NextRequest) {
     });
 
     if (!existingUserId) {
+      const secureAttr = process.env.NODE_ENV === "production" ? "; Secure" : "";
       response.headers.append(
         "Set-Cookie",
-        `syncdraft_user_id=${userId}; Path=/; Max-Age=31536000; SameSite=Lax`
+        `syncdraft_user_id=${userId}; Path=/; Max-Age=31536000; SameSite=Lax; HttpOnly${secureAttr}`
       );
     }
 

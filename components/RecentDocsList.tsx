@@ -24,22 +24,20 @@ export default function RecentDocsList({ documents }: RecentDocsListProps) {
   return (
     <section className="surface p-6">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-slate-900">Recent documents</h2>
+        <h2 className="text-xl font-semibold text-slate-900">Recent Documents</h2>
         <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">
           {documents.length} total
         </span>
       </div>
 
       {documents.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50/60 px-5 py-10 text-center">
+        <div className="rounded-2xl border border-dashed border-slate-300 bg-gradient-to-br from-slate-50 to-blue-50/60 px-5 py-12 text-center">
           <div className="mx-auto mb-3 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm">
             <FileText className="h-5 w-5" />
           </div>
-          <p className="text-sm font-medium text-slate-700">
-            No documents yet
-          </p>
+          <p className="text-sm font-semibold text-slate-800">No documents yet</p>
           <p className="mt-1 text-sm text-slate-500">
-            Create your first document to start collaborating.
+            Create your first shared document to start collaborating.
           </p>
         </div>
       ) : (

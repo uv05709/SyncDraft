@@ -26,20 +26,20 @@ export default function PresenceAvatars() {
   ];
 
   return (
-    <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-2.5 py-1.5">
-      <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+    <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-2.5 py-1.5 shadow-sm">
+      <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
         Active
       </span>
       <div className="flex items-center">
         {participants.map((participant, index) => (
           <div
             key={participant.id}
-            className="-ml-1 first:ml-0"
+            className="-ml-2 first:ml-0"
             style={{ zIndex: participants.length - index }}
             title={`${participant.name}${participant.isYou ? " (You)" : ""}`}
           >
             <div
-              className="inline-flex h-8 min-w-8 items-center justify-center rounded-full border-2 border-white px-2 text-[10px] font-semibold text-white shadow-sm"
+              className="inline-flex h-8 min-w-8 items-center justify-center rounded-full border-2 border-white px-2 text-[10px] font-semibold text-white shadow-sm transition hover:-translate-y-0.5"
               style={{ backgroundColor: participant.color }}
             >
               {participant.name.slice(0, 2).toUpperCase()}

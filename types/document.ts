@@ -6,3 +6,11 @@ export type DocumentSummary = {
 };
 
 export type SaveState = "idle" | "saving" | "saved" | "error";
+
+export type RevisionSummary = {
+  id: string;
+  documentId: string;
+  content: string;
+  createdAt: string;
+  updatedBy: string | null;
+};
