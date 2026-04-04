@@ -102,15 +102,14 @@ Deployed using Vercel
 
 ## 🎥 Demo Video
 
-\[Add your YouTube / Drive Link here\]
+[https://youtu.be/_bypZuWfkA4]
 
 ------------------------------------------------------------------------
 
 ## 🧠 AI Tools Used
 
--   ChatGPT (OpenAI)
--   Codex (OpenAI)
--   Claude (Anthropic)
+- ChatGPT (for debugging, architecture ideas , script & guidance)
+- ElevenLabs (voice generation)
 
 All generated code was reviewed and modified manually.
 
